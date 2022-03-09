@@ -1,136 +1,130 @@
-* {
+*{
     margin: 0;
     padding: 0;
 }
 
-body {
+body{
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
 
-/* Navbar */
-
-nav {
+nav{
     display: flex;
-    background-color: rgb(255, 0, 242);
+    background-color: rgb(166, 90, 243);
     justify-content: space-around;
-    /* padding: 20px 0; */
     height: 50px;
     align-items: center;
-    color: rgb(245, 235, 244);
 }
 
-nav .logo {
+nav .logo{
+    color: rgb(244, 237, 252);
     font-family: 'Pacifico', cursive;
     letter-spacing: 3px;
 }
 
-
-nav ul {
+nav ul{
     display: flex;
     list-style: none;
     width: 40%;
     justify-content: space-between;
 }
 
-nav ul li a {
-    color: rgb(247, 206, 243);
+nav ul li a{
+    color: rgb(225, 196, 255);
     text-decoration: none;
-    font-size: 0.8em;
-    font-weight: bold;
+    font-size: 0.9em;
 }
 
-nav ul li a:hover {
+nav ul li a:hover{
     color: white;
 }
 
-/* Hamburger Menu */
-.menu-toggle {
+/* Menu Humberger */
+.menu-toggle{
     display: none;
-    height: 20px;
     flex-direction: column;
+    height: 20px;
     justify-content: space-between;
     position: relative;
 }
 
-.menu-toggle input {
+.menu-toggle span{
+    width: 28px;
+    height: 3px;
+    background-color: rgb(225, 196, 255);
+    display: block;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.menu-toggle input{
     position: absolute;
     width: 40px;
     height: 28px;
-    left: -5px;
-    top: -3px;
+    left: -8px;
+    top: -2px;
     opacity: 0;
-    cursor: pointer;
-    z-index: 999;
+    z-index: 2;
 }
 
-
-
-.menu-toggle span {
-    width: 28px;
-    height: 3px;
-    background-color: white;
-    display: block;
-    border-radius: 3px;
-    transition: all .5s;
-}
-
-/* Hamburger Menu Animation - Teknik CSS Sibling*/
-.menu-toggle span:nth-child(2) {
+/* Humberger Menu Animation */
+.menu-toggle span:nth-child(2){
     transform-origin: 0 0;
-    /*Mengatur Poros*/
 }
 
-.menu-toggle span:nth-child(4) {
+.menu-toggle span:nth-child(4){
     transform-origin: 0 100%;
-    /*Mengatur Poros*/
 }
 
-
-.menu-toggle input:checked~span:nth-child(2) {
+.menu-toggle input:checked ~ span:nth-child(2){
     background-color: white;
     transform: rotate(45deg) translate(-1px, -1px);
 }
 
-.menu-toggle input:checked~span:nth-child(4) {
-    background-color: white;
-    transform: rotate(-45deg) translate(-1px, 0px);
-}
-
-.menu-toggle input:checked~span:nth-child(3) {
+.menu-toggle input:checked ~ span:nth-child(3){
+    scale: 0px;
     opacity: 0;
-    transform: scale(0);
 }
 
-
-
-
+.menu-toggle input:checked ~ span:nth-child(4){
+    background-color: white;
+    transform: rotate(-45deg) translate(-1px, 0);
+}
 
 
 /* Responsive Breakpoint */
 
 /* Ukuran Tablet */
 @media screen and (max-width: 768px) {
-    nav ul {
+    nav ul{
         width: 50%;
     }
-
 }
 
-/* Ukuran  Mobile*/
 @media screen and (max-width: 576px) {
-
     .menu-toggle {
         display: flex;
     }
 
     nav ul {
-        display: absolute;
-        flex-direction: column;
-        right: 0;
+        position: absolute;
+        width: 80%;
+        right: 0px;
         top: 0px;
-        background-color: black;
-
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: rgb(151, 48, 255);
+        transform: translateX(100%);
+        transition: all 1s;
+        z-index: -1;
+        opacity: 0;
     }
 
+    nav ul.slide{
+        opacity: 1;
+        transform: translateX(0);
+    }
 
 }
